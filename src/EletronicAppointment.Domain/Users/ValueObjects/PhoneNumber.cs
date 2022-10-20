@@ -10,7 +10,7 @@ public struct PhoneNumber : IEquatable<PhoneNumber>
         var reg = new Regex("^\\+?[1-9][0-9]{7,14}$");
         
         if (!reg.IsMatch(text))
-            throw new Exception("Invalid email");
+            throw new Exception("Invalid phone number");
 
         this._text = text;
     }

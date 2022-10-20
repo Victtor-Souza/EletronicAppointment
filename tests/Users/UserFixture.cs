@@ -8,8 +8,12 @@ public class UserFixture : IDisposable
     public User CreateUser() => new Faker<User>("pt_BR")
                                       .CustomInstantiator(f =>  User.Create(f.Lorem.Word(), 
                                                                         f.Lorem.Word(), 
-                                                                        f.Lorem.Word(), 
-                                                                        f.Lorem.Word(), 
+                                                                        f.Phone.PhoneNumber()
+                                                                               .Replace("(", "")
+                                                                               .Replace(")", "")
+                                                                               .Replace("-", "")
+                                                                               .Replace(" ", ""), 
+                                                                        f.Person.Email, 
                                                                         f.Lorem.Word(), 
                                                                         f.Lorem.Word())).Generate();
 

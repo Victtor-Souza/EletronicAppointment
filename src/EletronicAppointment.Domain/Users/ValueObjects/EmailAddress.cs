@@ -7,7 +7,7 @@ public struct EmailAddress : IEquatable<EmailAddress>
     private string _text;
     public EmailAddress(string text)
     {
-        var reg = new Regex("^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$");
+        var reg = new Regex("^\\S+@\\S+\\.\\S+$");
         
         if (!reg.IsMatch(text))
             throw new Exception("Invalid email");
