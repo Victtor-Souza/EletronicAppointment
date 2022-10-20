@@ -1,0 +1,11 @@
+RN
+1 - Um projeto deve conter apenas usuários distintos - OK
+2 - Um usuário só deve estar presente em projetos distintos - OK
+3 - Um ponto de um projeto não pode ser marcado sobrepondo a data de outro ponto ou entre um ponto de entrada e de saída de outro projeto - OK
+4 - Um ponto só pode ser marcado em um projeto que esteja em aberto - OK
+
+RF
+5 - Um usário deve poder logar utilizando username + password (bearer token) e Oauth com o Google ou Github
+6 - Um usuário pode habilitar autenticação de dois fatores via email ou sms
+7 - Um usuário pode realizar o upload de um arquivo de ponto (xlsx, txt ou csv) com os pontos de um determinado projeto
+8 - Um usuário pode visualizar seus pontos, bem como o seu total de horas trabalhadas e o valor recebido por mẽs
