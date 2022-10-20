@@ -17,6 +17,55 @@ public class UserFixture : IDisposable
                                                                         f.Lorem.Word(), 
                                                                         f.Lorem.Word())).Generate();
 
+    public User CreateUserWithoutFirstName() => new Faker<User>("pt_BR")
+                                      .CustomInstantiator(f =>  User.Create(String.Empty, 
+                                                                        f.Lorem.Word(), 
+                                                                        f.Phone.PhoneNumber()
+                                                                               .Replace("(", "")
+                                                                               .Replace(")", "")
+                                                                               .Replace("-", "")
+                                                                               .Replace(" ", ""), 
+                                                                        f.Person.Email, 
+                                                                        f.Lorem.Word(), 
+                                                                        f.Lorem.Word())).Generate();
+    
+    public User CreateUserWithoutLastName() => new Faker<User>("pt_BR")
+                                      .CustomInstantiator(f =>  User.Create(f.Lorem.Word(), 
+                                                                        String.Empty, 
+                                                                        f.Phone.PhoneNumber()
+                                                                               .Replace("(", "")
+                                                                               .Replace(")", "")
+                                                                               .Replace("-", "")
+                                                                               .Replace(" ", ""), 
+                                                                        f.Person.Email, 
+                                                                        f.Lorem.Word(), 
+                                                                        f.Lorem.Word())).Generate();
+
+    public User CreateUserWithoutUserName() => new Faker<User>("pt_BR")
+                                      .CustomInstantiator(f =>  User.Create(f.Lorem.Word(), 
+                                                                        f.Lorem.Word(), 
+                                                                        f.Phone.PhoneNumber()
+                                                                               .Replace("(", "")
+                                                                               .Replace(")", "")
+                                                                               .Replace("-", "")
+                                                                               .Replace(" ", ""), 
+                                                                        f.Person.Email, 
+                                                                        String.Empty, 
+                                                                        f.Lorem.Word())).Generate();
+
+    public User CreateUserWithoutPassword() => new Faker<User>("pt_BR")
+                                      .CustomInstantiator(f =>  User.Create(f.Lorem.Word(), 
+                                                                        f.Lorem.Word(), 
+                                                                        f.Phone.PhoneNumber()
+                                                                               .Replace("(", "")
+                                                                               .Replace(")", "")
+                                                                               .Replace("-", "")
+                                                                               .Replace(" ", ""), 
+                                                                        f.Person.Email, 
+                                                                        f.Lorem.Word(), 
+                                                                        String.Empty)).Generate();
+
+
     public User CreateUserWithProjectAdded()
     {
         var user = this.CreateUser();
@@ -25,7 +74,6 @@ public class UserFixture : IDisposable
         return user;
     }
 
-    
     
 
     public void Dispose()

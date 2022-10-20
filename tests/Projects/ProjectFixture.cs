@@ -11,6 +11,14 @@ public class ProjectFixture : IDisposable
                                       .CustomInstantiator(f => Project.Create(f.Lorem.Word(), f.Date.Past(), f.Date.Future(), 1))
                                       .Generate();
 
+    public Project CreateProjectWithoutDescription() => new Faker<Project>("pt_BR")
+                                      .CustomInstantiator(f => Project.Create(String.Empty, f.Date.Past(), f.Date.Future(), 1))
+                                      .Generate();
+
+    public Project CreateProjectWithEndDateLessThanStartDate() => new Faker<Project>("pt_BR")
+                                      .CustomInstantiator(f => Project.Create(f.Lorem.Word(), f.Date.Future(), f.Date.Past(), 1))
+                                      .Generate();
+
     
     public Project CreateProjectWithUser() 
     {

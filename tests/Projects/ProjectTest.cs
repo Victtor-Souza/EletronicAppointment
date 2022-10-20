@@ -68,4 +68,24 @@ public class ProjectTest
         var action = () => project.AddPoint(Guid.NewGuid(), 1, "", points);
         action.Should().NotThrow<Exception>("Because all points are close");
     }
+
+    [Fact(DisplayName = "Check constructor without description")]
+    [Trait("Model", "Project")]
+    public void Project_Constructor_Without_Description()
+    {
+        var project = () => _projectFixture.CreateProjectWithoutDescription();
+
+        project.Should().Throw<ArgumentNullException>()
+                        .Where(x => x.Message.Contains("Description can't be empty"));
+    }
+
+    [Fact(DisplayName = "Check constructor with end date less then start date")]
+    [Trait("Model", "Project")]
+    public void Project_Constructor_With_InvalidEndDate()
+    {
+        var project = () => _projectFixture.CreateProjectWithEndDateLessThanStartDate();
+
+        project.Should().Throw<ArgumentException>()
+                        .Where(x => x.Message.Contains("End date can't be less or equal then start date"));
+    }
 }
