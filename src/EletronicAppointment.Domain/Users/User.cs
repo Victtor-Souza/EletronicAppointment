@@ -1,5 +1,4 @@
 using EletronicAppointment.Domain.Points;
-using EletronicAppointment.Domain.Projects;
 using EletronicAppointment.Domain.Users.ValueObjects;
 using EletronicAppointment.Domain.UsersProjects;
 

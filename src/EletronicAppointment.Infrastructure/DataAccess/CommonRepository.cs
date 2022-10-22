@@ -1,26 +1,37 @@
 using EletronicAppointment.Domain;
+using Microsoft.EntityFrameworkCore;
 
 namespace EletronicAppointment.Infrastructure.DataAccess;
 
 public class CommonRepository<T> : ICommonRepository<T> where T : class
 {
-    public Task AddAsync(T entity)
+    protected readonly Context _context;
+
+    public CommonRepository(Context context)
     {
-        throw new NotImplementedException();
+            _context = context;
     }
 
-    public Task Delete(T entity)
+    public virtual async Task AddAsync(T entity)
     {
-        throw new NotImplementedException();
+        await _context.Set<T>().AddAsync(entity);    
     }
 
-    public Task<T> GetAsync(Guid id)
+    public virtual Task Delete(T entity)
     {
-        throw new NotImplementedException();
+        _context.Set<T>().Remove(entity);
+        return Task.FromResult(true);
     }
 
-    public Task Update(T entity)
+    public virtual async Task<T> GetAsync(Guid id)
     {
-        throw new NotImplementedException();
+         var entity = await _context.Set<T>().FindAsync(id);
+         return entity;
+    }
+
+    public virtual Task Update(T entity)
+    {
+        _context.Entry(entity).State = EntityState.Modified;
+        return Task.FromResult(true);
     }
 }
