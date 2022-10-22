@@ -1,3 +1,5 @@
+using EletronicAppointment.Domain.Projects;
+
 namespace EletronicAppointment.Domain.ProjectConfigs;
 
 public class ProjectConfig
@@ -39,5 +41,6 @@ public class ProjectConfig
     public string Description { get; private set; }
     public string Key { get; private set; }
     public string Value { get; private set; }
+    public virtual Project Project {get; private set;}
     
 }

@@ -1,3 +1,6 @@
+using EletronicAppointment.Domain.Projects;
+using EletronicAppointment.Domain.Users;
+
 namespace EletronicAppointment.Domain.Points;
 public class Point
 {
@@ -42,6 +45,8 @@ public class Point
     public Guid ProjectId { get; private set; }
     public DateTime Opened { get; private set; }
     public DateTime? Closed {get; private set;}
+    public virtual User User {get; private set;}
+    public virtual Project Project {get; private set;}
     public int AnnotationType { get; private set; }
     public string Observation { get; private set; }
     public bool IsClosed => Closed is not null;

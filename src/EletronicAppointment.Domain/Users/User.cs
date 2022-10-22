@@ -1,3 +1,4 @@
+using EletronicAppointment.Domain.Points;
 using EletronicAppointment.Domain.Projects;
 using EletronicAppointment.Domain.Users.ValueObjects;
 using EletronicAppointment.Domain.UsersProjects;
@@ -75,6 +76,7 @@ public class User
     public EmailAddress EmailAddress { get; private set; }
     public string Username { get; private set; }
     public string Password { get; private set; }
+    public virtual IReadOnlyCollection<Point> Points {get; private set;}
     public IReadOnlyCollection<UserProject> Projects => _projects.ToArray();
 
     public void AddProject(Guid projectId)
